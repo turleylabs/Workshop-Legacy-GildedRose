@@ -9,6 +9,8 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'jacoco'
+    id 'info.solidsoft.pitest' version '1.5.1'
 }
 
 repositories {
@@ -30,4 +32,12 @@ dependencies {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+}
+
+pitest {
+    targetClasses = ['com.turleylabs.gildedrose.*']  //by default "${project.group}.*"
+    targetTests = ['com.turleylabs.gildedrose.*']
+    outputFormats = ['HTML']
+    junit5PluginVersion = '0.12'
+
 }
